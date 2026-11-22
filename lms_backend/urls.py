@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from accounts.views import TrainerSignUpView
+from rest_framework.authtoken.views import ObtainAuthToken
+from accounts.views import TrainerProfileRetriveUpdateView
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #accounts
+    path('trainer/register/',TrainerSignUpView.as_view()),
+
+    path('token/',ObtainAuthToken.as_view()),
+
+    path('trainer/profile/',TrainerProfileRetriveUpdateView.as_view()),
 ]
