@@ -19,6 +19,10 @@ from django.urls import path
 from accounts.views import TrainerSignUpView
 from rest_framework.authtoken.views import ObtainAuthToken
 from accounts.views import TrainerProfileRetriveUpdateView
+from course_management.views import CourseListCreateView
+from course_management.views import CourseRetriveUpdateDeleteView
+from module_management.views import ModuleCreateView
+from module_management.views import ModuleRetriveUpdateDeleteView
 urlpatterns = [
     path('admin/', admin.site.urls),
     #accounts
@@ -27,4 +31,12 @@ urlpatterns = [
     path('token/',ObtainAuthToken.as_view()),
 
     path('trainer/profile/',TrainerProfileRetriveUpdateView.as_view()),
+
+    path('course/',CourseListCreateView.as_view()),
+
+    path('courses/<int:pk>/',CourseRetriveUpdateDeleteView.as_view()),
+
+    path('courses/<int:pk>/module/',ModuleCreateView.as_view()),
+
+    path('module/<int:pk>/',ModuleRetriveUpdateDeleteView.as_view()),
 ]
